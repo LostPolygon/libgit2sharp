@@ -2,20 +2,13 @@
 # see travis-ci.org for details
 
 language: csharp
-mono:
- - 3.12.0
- - 4.2.3
+dist: trusty
+dotnet: latest
+mono: none
 
 os:
  - osx
  - linux
-
-# The newer image cannot find mono 3.12 in the PATH
-osx_image: xcode6.4
-
-env:
- global:
-  - MONO_OPTIONS=--debug
 
 before_install:
  - date -u
@@ -35,6 +28,7 @@ branches:
    - master
    - /^maint.*/
    - portable
+   - dotnetcore
 
 # Notify of build changes
 notifications:
