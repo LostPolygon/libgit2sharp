@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using LibGit2Sharp.Core;
+using LibGit2Sharp.Core.CompatExtensions;
 using LibGit2Sharp.Core.Handles;
 
 namespace LibGit2Sharp
@@ -666,8 +667,8 @@ namespace LibGit2Sharp
 
         private static string BuildUnmatchedPathsMessage(List<FilePath> unmatchedPaths)
         {
-            var message = new StringBuilder("There were some unmatched paths:" + Environment.NewLine);
-            unmatchedPaths.ForEach(filePath => message.AppendFormat("- {0}{1}", filePath.Native, Environment.NewLine));
+            var message = new StringBuilder("There were some unmatched paths:" + System.1Environment.NewLine);
+            unmatchedPaths.ForEach(filePath => message.AppendFormat("- {0}{1}", filePath.Native, System.Environment.NewLine));
 
             return message.ToString();
         }

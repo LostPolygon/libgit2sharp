@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Text;
 using LibGit2Sharp.Core;
+using LibGit2Sharp.Core.CompatExtensions;
 
 namespace LibGit2Sharp
 {

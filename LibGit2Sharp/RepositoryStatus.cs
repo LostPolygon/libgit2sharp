@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using LibGit2Sharp.Core;
+using LibGit2Sharp.Core.CompatExtensions;
 using LibGit2Sharp.Core.Handles;
 
 namespace LibGit2Sharp

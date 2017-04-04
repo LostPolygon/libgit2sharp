@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using LibGit2Sharp;
 using LibGit2Sharp.Core;
+using LibGit2Sharp.Core.CompatExtensions;
 
 namespace LibGit2Sharp
 {
@@ -119,7 +120,7 @@ namespace LibGit2Sharp
             Ensure.ArgumentNotNull(repository, "repository");
             Ensure.ArgumentNotNullOrEmptyEnumerable<string>(paths, "paths");
 
-            var pathsToDelete = paths.Where(p => Directory.Exists(Path.Combine(repository.Info.WorkingDirectory, p))).ToList();
+            var pathsToDelete = paths.Where(p => Directory.Exists(Core.Compat.Path.Combine(repository.Info.WorkingDirectory, p))).ToList();
             var notConflictedPaths = new List<string>();
             var index = repository.Index;
 
@@ -162,7 +163,7 @@ namespace LibGit2Sharp
 
             foreach (string path in pathsList)
             {
-                string fileName = Path.Combine(wd, path);
+                string fileName = Core.Compat.Path.Combine(wd, path);
 
                 if (Directory.Exists(fileName))
                 {

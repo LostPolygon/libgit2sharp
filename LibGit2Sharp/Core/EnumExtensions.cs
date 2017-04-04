@@ -8,7 +8,7 @@ namespace LibGit2Sharp.Core
     {
         public static bool HasAny(this Enum enumInstance, IEnumerable<Enum> entries)
         {
-            return entries.Any(enumInstance.HasFlag);
+            return entries.Any(flag => CompatExtensions.EnumExtensions.HasFlag(enumInstance, flag));
         }
     }
 }

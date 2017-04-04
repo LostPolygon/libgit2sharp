@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using LibGit2Sharp.Core;
+using LibGit2Sharp.Core.CompatExtensions;
 
 namespace LibGit2Sharp
 {

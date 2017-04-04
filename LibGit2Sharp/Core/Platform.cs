@@ -13,7 +13,16 @@ namespace LibGit2Sharp.Core
     {
         public static string ProcessorArchitecture
         {
-            get { return Environment.Is64BitProcess ? "x64" : "x86"; }
+            get
+            {
+                return
+#if NET35
+                    Compat.Environment.Is64BitProcess
+#else
+                    Environment.Is64BitProcess
+#endif
+                    ? "x64" : "x86";
+            }
         }
 
         public static OperatingSystemType OperatingSystem

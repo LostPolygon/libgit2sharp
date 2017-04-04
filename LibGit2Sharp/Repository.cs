@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using LibGit2Sharp.Core;
+using LibGit2Sharp.Core.CompatExtensions;
 using LibGit2Sharp.Core.Handles;
 using LibGit2Sharp.Handlers;
 
@@ -91,7 +92,7 @@ namespace LibGit2Sharp
             this(path, options, RepositoryRequiredParameter.Path | RepositoryRequiredParameter.Options)
         {
         }
-        
+
         private Repository(string path, RepositoryOptions options, RepositoryRequiredParameter requiredParameter)
         {
             if ((requiredParameter & RepositoryRequiredParameter.Path) == RepositoryRequiredParameter.Path)
@@ -206,7 +207,7 @@ namespace LibGit2Sharp
         {
             Ensure.ArgumentNotNull(path, "path");
 
-            if (string.IsNullOrWhiteSpace(path))
+            if (Core.Compat.String.IsNullOrWhiteSpace(path))
             {
                 return false;
             }
@@ -1048,7 +1049,7 @@ namespace LibGit2Sharp
 
                 if (treesame && !amendMergeCommit)
                 {
-                    throw (options.AmendPreviousCommit ? 
+                    throw (options.AmendPreviousCommit ?
                         new EmptyCommitException("Amending this commit would produce a commit that is identical to its parent (id = {0})", parents[0].Id) :
                         new EmptyCommitException("No changes; nothing to commit."));
                 }
@@ -1239,7 +1240,7 @@ namespace LibGit2Sharp
             if (fetchHeads.Length == 0)
             {
                 var expectedRef = this.Head.UpstreamBranchCanonicalName;
-                throw new MergeFetchHeadNotFoundException("The current branch is configured to merge with the reference '{0}' from the remote, but this reference was not fetched.", 
+                throw new MergeFetchHeadNotFoundException("The current branch is configured to merge with the reference '{0}' from the remote, but this reference was not fetched.",
                     expectedRef);
             }
 
