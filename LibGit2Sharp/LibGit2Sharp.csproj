@@ -48,14 +48,8 @@
     <AssemblyOriginatorKeyFile>libgit2sharp.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NetLegacySupport.Tuple, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b53845dedb3ed59d, processorArchitecture=MSIL">
-      <HintPath>..\packages\NetLegacySupport.Tuple.1.1.1\lib\net35\NetLegacySupport.Tuple.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Threading, Version=1.0.2856.102, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\TaskParallelLibrary.1.0.2856.0\lib\Net35\System.Threading.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AfterRebaseStepInfo.cs" />
@@ -86,7 +80,6 @@
     <Compile Include="Core\Compat\EnumExtensions.cs" />
     <Compile Include="Core\Compat\Environment.cs" />
     <Compile Include="Core\Compat\Path.cs" />
-    <Compile Include="Core\Compat\StreamExtensions.cs" />
     <Compile Include="Core\Compat\String.cs" />
     <Compile Include="Core\FileHistory.cs" />
     <Compile Include="Core\GitFetchOptions.cs" />
@@ -402,7 +395,12 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\3rdParty\dotnet-tpl35\System.Threading.Tasks.Unity.csproj">
+      <Project>{dcb5d745-525c-46a1-bfc0-e12f87ab6165}</Project>
+      <Name>System.Threading.Tasks.Unity</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
