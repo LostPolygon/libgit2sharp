@@ -115,7 +115,7 @@ namespace LibGit2Sharp
             if (!ChangesBuilders.TryGetValue(typeof(T), out builder))
             {
                 throw new LibGit2SharpException("User-defined types passed to Compare are not supported. Supported values are: {0}",
-                    string.Join(", ", ChangesBuilders.Keys.Select(x => x.Name)));
+                    Compat.String.Join(", ", ChangesBuilders.Keys.Select(x => x.Name)));
             }
 
             return (T)builder(diff);
@@ -667,8 +667,8 @@ namespace LibGit2Sharp
 
         private static string BuildUnmatchedPathsMessage(List<FilePath> unmatchedPaths)
         {
-            var message = new StringBuilder("There were some unmatched paths:" + System.1Environment.NewLine);
-            unmatchedPaths.ForEach(filePath => message.AppendFormat("- {0}{1}", filePath.Native, System.Environment.NewLine));
+            var message = new StringBuilder("There were some unmatched paths:" + Environment.NewLine);
+            unmatchedPaths.ForEach(filePath => message.AppendFormat("- {0}{1}", filePath.Native, Environment.NewLine));
 
             return message.ToString();
         }

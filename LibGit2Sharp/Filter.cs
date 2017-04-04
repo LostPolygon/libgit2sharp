@@ -36,7 +36,7 @@ namespace LibGit2Sharp
 
             this.name = name;
             this.attributes = attributes;
-            var attributesAsString = string.Join(",", this.attributes.Select(attr => attr.FilterDefinition));
+            var attributesAsString = Compat.String.Join(",", this.attributes.Select(attr => attr.FilterDefinition));
 
             gitFilter = new GitFilter
             {
@@ -263,7 +263,7 @@ namespace LibGit2Sharp
 
                 state.nextPtr = git_writestream_next;
                 state.nextStream = (GitWriteStream)Marshal.PtrToStructure(state.nextPtr, typeof(GitWriteStream));
-                
+
                 state.filterSource = FilterSource.FromNativePtr(filterSourcePtr);
                 state.output = new WriteStream(state.nextStream, state.nextPtr);
 
@@ -271,7 +271,7 @@ namespace LibGit2Sharp
 
                 if (!activeStreams.TryAdd(state.thisPtr, state))
                 {
-                    // AFAICT this is a theoretical error that could only happen if we manage 
+                    // AFAICT this is a theoretical error that could only happen if we manage
                     // to free the stream pointer but fail to remove the dictionary entry.
                     throw new InvalidOperationException("Overlapping stream pointers");
                 }
