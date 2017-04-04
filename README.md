@@ -1,3 +1,10 @@
+# This fork
+
+This fork is a backport of LibGit2Sharp for .NET 3.5 runtime. It uses [NetLegacySupport.Tuple][NetLegacySupport.Tuple] and [TaskParallelLibrary][TaskParallelLibrary] to fill in the gaps in APIs missing in .NET 3.5.
+
+[NetLegacySupport.Tuple]: https://www.nuget.org/packages/NetLegacySupport.Tuple/
+[TaskParallelLibrary]: https://www.nuget.org/packages/TaskParallelLibrary/
+
 # LibGit2Sharp
 
 **LibGit2Sharp brings all the might and speed of [libgit2][libgit2], a native Git implementation, to the managed world of .NET and Mono.**
